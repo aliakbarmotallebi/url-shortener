@@ -1,0 +1,24 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "\"# url-shortener\"",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i assets/styles/tailwind.css -o public/static/styles/main.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliakbarmotallebi/url-shortener.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliakbarmotallebi/url-shortener/issues"
+  },
+  "homepage": "https://github.com/aliakbarmotallebi/url-shortener#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24"
+  }
+}
