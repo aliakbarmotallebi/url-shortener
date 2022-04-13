@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "Aliakbar\\UrlShortener\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "authors": [
         {

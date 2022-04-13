@@ -4,11 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="<?= asset('/static/styles/main.css') ?>" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
-    <div class="bg-gray-800">
-        <p class="text-white">Hello Word</p>
-    </div>
-</body>
-</html>
