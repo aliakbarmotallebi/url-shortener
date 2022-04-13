@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "690ce6c52a6a85a27c2e42525a71efa3",
+    "content-hash": "131cd4d822eed6ea3e5477095cb31a91",
     "packages": [
+        {
+            "name": "bulveyz/router-php",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Bulveyz/router-php.git",
+                "reference": "465063a1581f809889b5f408b61220d41ecfe464"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Bulveyz/router-php/zipball/465063a1581f809889b5f408b61220d41ecfe464",
+                "reference": "465063a1581f809889b5f408b61220d41ecfe464",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Bulveyz/helpers.php"
+                ],
+                "psr-4": {
+                    "BulveyzRouter\\": "src/Bulveyz/Router/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulveyz",
+                    "email": "rus131354@icloud.com"
+                }
+            ],
+            "description": "Simple router for light projects PHP",
+            "support": {
+                "issues": "https://github.com/Bulveyz/router-php/issues",
+                "source": "https://github.com/Bulveyz/router-php/tree/master"
+            },
+            "time": "2018-06-12T14:21:09+00:00"
+        },
         {
             "name": "symfony/deprecation-contracts",
             "version": "v2.5.1",
