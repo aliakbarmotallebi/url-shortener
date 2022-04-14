@@ -5,10 +5,24 @@ use Aliakbar\UrlShortener\Models\User;
 
 class LoginController extends View{
 
+
   public function index()
   {
-    $users = (new User)->all();
-    var_dump($users);die;
-    $this->render("auth\login.html.php");
+    return $this->render("auth\login.html.php");
+  }
+
+  public function login()
+  {
+      if(! request()->isPost()){
+        return redirect(route('login.index'));
+      }
+
+      $user = new User;
+      $user->username = request('username');
+      $user->password = request('passcode');
+
+      var_dump($user->login());die;
+
+      return redirect(route('login.index'));
   }
 }
