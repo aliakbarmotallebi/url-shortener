@@ -5,4 +5,15 @@ use Aliakbar\UrlShortener\Helper\Database;
 class Link extends Database {
 
     protected $table = "links";
+
+    public $url;
+
+    public $code;
+
+    public $created_at;
+
+    public function getUrlShort()
+    {
+        return url($this->code);
+    }
 }

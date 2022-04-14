@@ -19,7 +19,7 @@ class Database {
 
     protected $fetchType = 'fetchAll';
 
-    protected $fetchMode = \PDO::FETCH_OBJ;
+    protected $fetchMode = \PDO::FETCH_CLASS;
 
     public function __construct()
     {
@@ -30,11 +30,12 @@ class Database {
 
         try {
             $this->pdo = new \PDO("mysql:host={$DB_HOST};dbname={$DB_DATABASE};charset=utf8",$DB_USERNAME , $DB_PASSWORD);
-
         } catch (\Exception $e) {
            die('Error : ' . $e->getMessage());
         }
     }
+
+    public function __set($name, $value) {}
 
     public function select()
     {
@@ -99,7 +100,7 @@ class Database {
         return $this;
     }
 
-    public function lasted($colmun="id")
+    public function latest($colmun="id")
     {
         $this->lasted = $colmun;
         return $this;
@@ -137,8 +138,26 @@ class Database {
 
     protected function fetch()
     {
-        return  $this->stmt->{($this->fetchType == 'fetchAll') ? 'fetchAll' : 'fetch'}($this->fetchMode);
+        $this->setFetchMode();
+        return  $this->stmt->{($this->fetchType == 'fetchAll') ? 'fetchAll' : 'fetch'}();
     }
+
+
+    protected function setFetchMode()
+    {
+        $fetchGetClass = 'StdClass';
+        $fetchArguments = func_get_args();
+
+        if ($this->fetchMode === \PDO::FETCH_CLASS) {
+            $fetchGetClass = get_called_class();
+            $statement = $this->stmt->setFetchMode($this->fetchMode, $fetchGetClass, $fetchArguments);
+        }else{
+            $statement = $this->stmt->setFetchMode($this->fetchMode);
+        }
+
+        return $statement;
+    }
+
 
     private function bindValue()
     {

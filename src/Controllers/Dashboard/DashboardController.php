@@ -9,8 +9,4 @@ class DashboardController extends View{
     return "Create First Controller the Method __construct";
   }
 
-  public function index()
-  {
-    $this->render("dashboard\index.html.php");
-  }
 }
