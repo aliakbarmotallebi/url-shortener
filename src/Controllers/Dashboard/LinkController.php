@@ -19,11 +19,29 @@ class LinkController extends AbstractController{
     $this->renderView("dashboard\index.html.php", compact('links'));
   }
 
+  public function store()
+	{
+      if(! request()->isPost()){
+          return false;
+      }
+
+      $link = (new Link);
+      $link->create( array_merge(
+              request()->all(),
+              [
+                'code' => $link->generateCode(),
+                'user_id' => auth()->user()->id
+              ]
+          )
+      );
+      return $this->redirectToRoute(route('dashboard.links.index'));
+  }
+
   public function delete($param)
 	{
       try{
           (new Link)->delete($param->id);
-          return redirect(route('dashboard.links.index'));
+          return $this->redirectToRoute(route('dashboard.links.index'));
 
       }catch(\Exception $e){}
 	}

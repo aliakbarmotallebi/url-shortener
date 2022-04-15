@@ -30,12 +30,12 @@ class Database {
 
         try {
             $this->pdo = new \PDO("mysql:host={$DB_HOST};dbname={$DB_DATABASE};charset=utf8",$DB_USERNAME , $DB_PASSWORD);
+            // $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\Exception $e) {
            die('Error : ' . $e->getMessage());
         }
     }
 
-    public function __set($name, $value) {}
 
     public function select()
     {
@@ -92,6 +92,10 @@ class Database {
         if(! empty($this->lasted)) {
             $query[] = "ORDER BY ";
             $query[] = "`$this->table`.`$this->lasted` DESC";
+        }
+
+        if(! empty($this->whereClause)) {
+            $query[] = $this->addWhereToQuery();
         }
 
         $this->stmt = $this->pdo->prepare(join(' ',$query));
@@ -180,6 +184,17 @@ class Database {
         return $this->stmt->execute();
     }
 
+    public function create($data)
+    {
+        $field = join(', ', array_keys($data));
+        $param = ':'. join(', :' , array_keys($data));
+
+        $this->stmt = $this->pdo->prepare("INSERT INTO $this->table ($field) VALUES ($param)");
+        $this->bind = $data;
+        $this->bindValue();
+        return $this->stmt->execute();
+    }
+
     public function delete($id)
     {
         $object = $this->find($id, 'id');
@@ -190,6 +205,20 @@ class Database {
         $this->stmt->bindValue(':id' , $id);
 
         return $this->stmt->execute();
+    }
+
+
+    private function addWhereToQuery()
+    {
+        $query = [];
+        $query[] = "WHERE";
+        foreach ($this->whereClause as $key => $where) {
+            if($key !=0 )
+                $query[] = "AND";
+            $query[] = $where;
+        }
+
+        return join(' ', $query);
     }
 
     private function fieldForUpdate($data)

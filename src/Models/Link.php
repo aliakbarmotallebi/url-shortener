@@ -19,4 +19,17 @@ class Link extends Database {
     {
         return url($this->code);
     }
+
+    public function getOrignalURL(string $code)
+    {
+        $url = $this->find($code, 'code');
+        if(!$url) return false;
+        return $url;
+    }
+
+    public function generateCode($idOfRow = 5)
+    {
+        $idOfRow += 10000000;
+        return base_convert($idOfRow, 10, 36);
+    }
 }

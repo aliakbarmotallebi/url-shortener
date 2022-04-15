@@ -52,8 +52,9 @@ if (! function_exists('redirect')) {
 if (! function_exists('url')) {
 
 	function url($http = null) {
-			$url = 'http://'.($_SERVER['HTTP_HOST']);
-			return rtrim($url . $http);
+			$url = 'http://'.($_SERVER['HTTP_HOST']). '/';
+			$http = ltrim($http, '/');
+			return ($url . $http);
 	}
 }
 
