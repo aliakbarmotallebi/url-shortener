@@ -2,11 +2,22 @@
 
 class View
 {
+    private $rootPath;
+
+    public function filesystemLoader(string $rootPath = null)
+    {
+        $this->rootPath = (null === $rootPath ? getcwd() : $rootPath).\DIRECTORY_SEPARATOR;
+        if (null !== $rootPath && false !== ($realPath = realpath($rootPath))) {
+            $this->rootPath = $rootPath.\DIRECTORY_SEPARATOR;
+        }
+
+        return $this->rootPath;
+    }
+
     function render($template, array $data = array())
     {
-        $DS  = DIRECTORY_SEPARATOR;
 
-        $template = __DIR__ . "/../../templates/{$template}";
+        $template = $this->filesystemLoader(getcwd() . '/../templates/') . $template;
 
         if (!is_file($template)) {
             throw new \RuntimeException('Template not found: ' . $template);

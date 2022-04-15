@@ -112,7 +112,7 @@ class Database {
         return $this;
     }
 
-    public function find($name , $value)
+    public function find($value, $name = 'id')
     {
         return $this->select()->where($name ,$value)->first();
     }

@@ -1,12 +1,17 @@
 <?php namespace Aliakbar\UrlShortener\Controllers\Dashboard;
 
-use Aliakbar\UrlShortener\Helper\View;
+use Aliakbar\UrlShortener\Controllers\AbstractController;
 
-class DashboardController extends View{
+class DashboardController extends AbstractController{
 
   public function __construct()
   {
-    return "Create First Controller the Method __construct";
+
+    if(! auth()->check() ){
+
+      return $this->redirectToRoute(route('auth.index'));
+    }
+
   }
 
 }

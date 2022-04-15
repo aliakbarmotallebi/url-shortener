@@ -5,6 +5,8 @@ use \Aliakbar\UrlShortener\Helper\{
 	Session
 };
 
+use Aliakbar\UrlShortener\Models\User;
+
 if ( ! function_exists('asset'))
 {
 	function asset($path)
@@ -50,9 +52,43 @@ if (! function_exists('redirect')) {
 if (! function_exists('url')) {
 
 	function url($http = null) {
-			$url = ($_SERVER['HTTP_HOST']. '/');
+			$url = 'http://'.($_SERVER['HTTP_HOST']);
 			return rtrim($url . $http);
 	}
 }
 
+if (! function_exists('auth')) {
+
+	function auth() {
+			return (new User);
+	}
+}
+
+if (! function_exists('json_response')) {
+
+	function json_response($code = 200, $message = null)
+	{
+			header_remove();
+
+			http_response_code($code);
+
+			header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
+			header('Content-Type: application/json');
+
+			$status = [
+					200 => '200 OK',
+					400 => '400 Bad Request',
+					422 => 'Unprocessable Entity',
+					500 => '500 Internal Server Error'
+				];
+
+			header('Status: '.$status[$code]);
+
+			return json_encode([
+					'status' => $code < 300,
+					'message' => $message
+			]);
+	}
+
+}
 
