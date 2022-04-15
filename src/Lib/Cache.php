@@ -15,7 +15,7 @@ class Cache
   {
     $this->setCacheDir( getenv('CACHE_DIR', './tmp/cache') )
          ->setCacheFileExtension('.cache')
-         ->setEnableCache( getenv('CACHE_ENABLE', true ) );
+         ->setEnableCache( getenv('CACHE_ENABLE') );
 
   }
   public function setCacheFileExtension($cacheFileExtension)
@@ -88,10 +88,10 @@ class Cache
 
   public function isEnableCache(): bool
   {
-    return (bool)$this->isEnableCache;
+    return ($this->isEnableCache === 'true');
   }
 
-  public function setEnableCache(bool $mode)
+  public function setEnableCache($mode)
   {
     $this->isEnableCache = $mode;
     return $this;
@@ -99,6 +99,10 @@ class Cache
 
   public function loadFileCache(string $name)
   {
+      if (!$this->isEnableCache()){
+        return false;
+      }
+
       $fileName = $this->setCacheFileName($name);
 
       $filepath = $this->getCacheFile();
@@ -140,8 +144,10 @@ class Cache
   public function remember($key, $ttl = 3600, \Closure $callback)
   {
     $this->setCacheFileName($key);
+
     if ( ! is_readable($this->getCacheFile()) ){
-        $this->saveCacheFile($key, $callback() , $ttl);
+        $this->saveCacheFile($key, $value = $callback() , $ttl);
+        return $value;
     }
     return $this->loadFileCache($key);
   }

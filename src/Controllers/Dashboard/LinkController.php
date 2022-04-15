@@ -6,7 +6,7 @@ use Aliakbar\UrlShortener\Models\Link;
 
 class LinkController extends AbstractController{
 
-  protected $cacheName = 'list_links';
+  protected $cacheKey = 'list_links';
 
   public function __construct()
   {
@@ -17,7 +17,7 @@ class LinkController extends AbstractController{
 
   public function index()
   {
-    $links = FileCache::remember($this->cacheName, 3600, function (){
+    $links = FileCache::remember($this->cacheKey, 3600, function (){
         return (new Link())->latest()->get();
     });
 
@@ -43,7 +43,7 @@ class LinkController extends AbstractController{
         );
       }
 
-      FileCache::delete($this->cacheName);
+      FileCache::delete($this->cacheKey);
       return $this->redirectToRoute(route('dashboard.links.index'));
   }
 
@@ -51,7 +51,7 @@ class LinkController extends AbstractController{
 	{
       try{
           (new Link)->delete($param->id);
-          FileCache::delete($this->cacheName);
+          FileCache::delete($this->cacheKey);
       }catch(\Exception $e){}
 
       return $this->redirectToRoute(route('dashboard.links.index'));
