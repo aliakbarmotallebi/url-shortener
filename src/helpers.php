@@ -43,7 +43,7 @@ if (! function_exists('session')) {
 
 if (! function_exists('redirect')) {
 
-	function redirect($param = null) {
+	function redirect($param = '/') {
 			return exit(header('location:'. url($param) ));
 	}
 }

@@ -15,10 +15,11 @@ class HomeController extends AbstractController{
   {
     $orignalUrl = (new Link)->getOrignalURL($param->code);
 
-    if($orignalUrl)
+    if($orignalUrl){
       die(header("Location: {$orignalUrl->url}"));
-
-    return $this->redirectToRoute(route('dashbaord.links.index'));
+      exit;
+    }
+    return $this->redirectToRoute(route('index'));
   }
 
   public function logout()

@@ -14,7 +14,7 @@ abstract class AbstractController {
         return json_response($data, $status);
     }
 
-    protected function redirectToRoute(string $route)
+    protected function redirectToRoute(string $route = "index")
     {
         return redirect($route);
     }
