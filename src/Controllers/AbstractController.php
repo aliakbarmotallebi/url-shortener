@@ -1,12 +1,12 @@
 <?php namespace Aliakbar\UrlShortener\Controllers;
 
-use Aliakbar\UrlShortener\Helper\View;
+use Aliakbar\UrlShortener\Facades\ViewLoader;
 
 abstract class AbstractController {
 
     protected function renderView(string $view, array $parameters = [])
     {
-        return (new View)->render($view, $parameters);
+        return ViewLoader::render($view, $parameters);
     }
 
     protected function json($data = [], int $status = 200)
