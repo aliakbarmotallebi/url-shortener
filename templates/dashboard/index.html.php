@@ -47,6 +47,10 @@
         </div>
       </div>
       <?php endforeach ?>
+
+      <a href="<?= route('logout') ?>" class='block px-3 py-2 text-sm font-semibold border-t border-gray-300 text-gray-900 hover:bg-gray-700 hover:text-white animate transition-all mt-2 text-center w-full'>
+          Logout
+      </a>
     </div>
   </div>
 </div>

@@ -6,12 +6,17 @@ use  Aliakbar\UrlShortener\Contracts\RequestInterface;
 class Request implements RequestInterface
 {
 
-    public function input($filed, $post = true)
+    public function input($field, $post = true)
     {
         if ($this->isPost() && $post)
-            return isset($_POST[$filed]) ? $_POST[$filed] : "";
+            return isset($_POST[$field]) ? $_POST[$field] : "";
 
-        return isset($_GET[$filed]) ? htmlspecialchars($_GET[$filed]) : "";
+        return isset($_GET[$field]) ? htmlspecialchars($_GET[$field]) : "";
+    }
+
+    public function has($field)
+    {
+        return (bool) !empty($this->input($field));
     }
 
     public function all($post = true)

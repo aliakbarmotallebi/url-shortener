@@ -25,15 +25,19 @@ class LinkController extends AbstractController{
           return false;
       }
 
-      $link = (new Link);
-      $link->create( array_merge(
-              request()->all(),
-              [
-                'code' => $link->generateCode(),
-                'user_id' => auth()->user()->id
-              ]
-          )
-      );
+      if(! request()->has('url') && preg_match('|^https?://|', request('url')))
+      {
+        $link = (new Link);
+        $link->create( array_merge(
+                request()->all(),
+                [
+                  'code' => $link->generateCode(),
+                  'user_id' => auth()->user()->id
+                ]
+            )
+        );
+      }
+
       return $this->redirectToRoute(route('dashboard.links.index'));
   }
 

@@ -11,9 +11,7 @@ trait Authentication {
 
     public function login()
     {
-
         $user = $this->where('username', $this->username)->first();
-
         if(! $user )
         { return false; }
 
