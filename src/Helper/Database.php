@@ -23,6 +23,11 @@ class Database {
 
     public function __construct()
     {
+        $this->connect();
+    }
+
+    private function connect()
+    {
         $DB_HOST     = getenv('DB_HOST');
         $DB_DATABASE = getenv('DB_DATABASE');
         $DB_USERNAME = getenv('DB_USERNAME');
@@ -30,7 +35,7 @@ class Database {
 
         try {
             $this->pdo = new \PDO("mysql:host={$DB_HOST};dbname={$DB_DATABASE};charset=utf8",$DB_USERNAME , $DB_PASSWORD);
-            // $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\Exception $e) {
            die('Error : ' . $e->getMessage());
         }
@@ -71,6 +76,13 @@ class Database {
     public function lastInsertId()
     {
         return $this->pdo->lastInsertId();
+    }
+
+
+    public function toArray()
+    {
+       $this->fetchMode = \PDO::FETCH_ASSOC;
+       return $this;
     }
 
     public function result()
@@ -228,6 +240,22 @@ class Database {
             $field[] = "$name = :$name";
         }
         return join(', ' , $field);
+    }
+
+
+    public function getPublicVars () {
+        $self = new class {
+            function getPublicVars($object) {
+                return get_object_vars($object);
+            }
+        };
+        return $self->getPublicVars($this);
+    }
+
+
+    public function __sleep()
+    {
+        return array_keys($this->getPublicVars());
     }
 }
 

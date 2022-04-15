@@ -1,9 +1,12 @@
 <?php namespace Aliakbar\UrlShortener\Controllers\Dashboard;
 
 use Aliakbar\UrlShortener\Controllers\AbstractController;
+use Aliakbar\UrlShortener\Facades\FileCache;
 use Aliakbar\UrlShortener\Models\Link;
 
 class LinkController extends AbstractController{
+
+  protected $cacheName = 'list_links';
 
   public function __construct()
   {
@@ -15,7 +18,10 @@ class LinkController extends AbstractController{
 
   public function index()
   {
-    $links = (new Link())->latest()->get();
+    $links = FileCache::remember($this->cacheName, 3600, function (){
+        return (new Link())->latest()->get();
+    });
+
     $this->renderView("dashboard\index.html.php", compact('links'));
   }
 
@@ -25,7 +31,7 @@ class LinkController extends AbstractController{
           return false;
       }
 
-      if(! request()->has('url') && preg_match('|^https?://|', request('url')))
+      if(request()->has('url') && preg_match('|^https?://|', request('url')))
       {
         $link = (new Link);
         $link->create( array_merge(
@@ -38,6 +44,7 @@ class LinkController extends AbstractController{
         );
       }
 
+      FileCache::delete($this->cacheName);
       return $this->redirectToRoute(route('dashboard.links.index'));
   }
 
@@ -45,8 +52,9 @@ class LinkController extends AbstractController{
 	{
       try{
           (new Link)->delete($param->id);
-          return $this->redirectToRoute(route('dashboard.links.index'));
-
+          FileCache::delete($this->cacheName);
       }catch(\Exception $e){}
+
+      return $this->redirectToRoute(route('dashboard.links.index'));
 	}
 }

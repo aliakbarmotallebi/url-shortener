@@ -27,9 +27,9 @@ class Link extends Database {
         return $url;
     }
 
-    public function generateCode($idOfRow = 5)
+    public function generateCode()
     {
-        $idOfRow += 10000000;
-        return base_convert($idOfRow, 10, 36);
+        $token = openssl_random_pseudo_bytes(4);
+        return bin2hex($token);
     }
 }

@@ -67,7 +67,7 @@ if (! function_exists('auth')) {
 
 if (! function_exists('json_response')) {
 
-	function json_response($code = 200, $message = null)
+	function json_response(array $message = null, $code = 200)
 	{
 			header_remove();
 
@@ -85,10 +85,7 @@ if (! function_exists('json_response')) {
 
 			header('Status: '.$status[$code]);
 
-			return json_encode([
-					'status' => $code < 300,
-					'message' => $message
-			]);
+			return json_encode($message);
 	}
 
 }

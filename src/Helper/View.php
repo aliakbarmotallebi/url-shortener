@@ -17,7 +17,7 @@ class View
     function render($template, array $data = array())
     {
 
-        $template = $this->filesystemLoader(getcwd() . '/../templates/') . $template;
+        $template = $this->filesystemLoader($_SERVER['DOCUMENT_ROOT'] . './templates/') . $template;
 
         if (!is_file($template)) {
             throw new \RuntimeException('Template not found: ' . $template);
