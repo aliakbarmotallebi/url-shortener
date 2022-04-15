@@ -168,7 +168,7 @@ class Database {
 
     public function update($id , $data)
     {
-        $object = $this->find('id' , $id);
+        $object = $this->find($id, 'id');
         if(!$object)
             throw new \Exception("this id not exist in $this->table table");
 
@@ -182,7 +182,7 @@ class Database {
 
     public function delete($id)
     {
-        $object = $this->find('id' , $id);
+        $object = $this->find($id, 'id');
         if(!$object)
             throw new \Exception("this id not exist in $this->table table");
 

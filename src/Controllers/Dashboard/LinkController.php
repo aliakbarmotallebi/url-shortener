@@ -18,4 +18,13 @@ class LinkController extends AbstractController{
     $links = (new Link())->latest()->get();
     $this->renderView("dashboard\index.html.php", compact('links'));
   }
+
+  public function delete($param)
+	{
+      try{
+          (new Link)->delete($param->id);
+          return redirect(route('dashboard.links.index'));
+
+      }catch(\Exception $e){}
+	}
 }
