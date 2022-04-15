@@ -13,7 +13,6 @@ class LinkController extends AbstractController{
     if( !auth()->check() ){
       return $this->redirectToRoute(route('auth.index'));
     }
-
   }
 
   public function index()
