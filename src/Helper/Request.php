@@ -32,4 +32,14 @@ class Request implements RequestInterface
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
 
+    public function ajax()
+    {
+        return $this->isXmlHttpRequest();
+    }
+
+    public function isXmlHttpRequest(): bool
+    {
+        return 'XMLHttpRequest' == ($_SERVER['X-Requested-With'] ?? null);
+    }
+
 }

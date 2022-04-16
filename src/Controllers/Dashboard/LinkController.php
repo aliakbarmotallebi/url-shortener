@@ -47,6 +47,7 @@ class LinkController extends AbstractController{
       return $this->redirectToRoute(route('dashboard.links.index'));
   }
 
+
   public function delete($param)
 	{
       try{

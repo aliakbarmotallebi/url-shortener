@@ -3,6 +3,7 @@
 use Aliakbar\UrlShortener\Traits\ApiResponser;
 
 abstract class ApiController {
+
   use ApiResponser;
 
 }
