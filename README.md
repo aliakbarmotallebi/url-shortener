@@ -25,13 +25,20 @@ POST /api/links/update/{id}
 
 POST /api/links/delete/{id}
 
-The example rest api : URL.postman_collection.json
+The example rest api : ./URL.postman_collection.json
+
+file db import : ./Importdb/shortener.sql
+
 
 
 ### Default
 
+
+Url : /login
+
 username: admin
 
 passscode: 123456
+
 
 
