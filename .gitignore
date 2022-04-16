@@ -1,5 +1,5 @@
-/vendor/
+/vendor
 composer.phar
-/node_modules/
-/tmp/cache/*
+/node_modules
+/tmp/cache
 .env
