@@ -1,0 +1,232 @@
+{
+	"id": "412635bc-8f3d-99e2-1af3-9c21fc75f9ee",
+	"name": "URL",
+	"description": "",
+	"order": [
+		"2874748f-5894-cee7-59f8-1f51ca705f21",
+		"76e22e98-7c2e-0682-f116-202725fb20a9",
+		"e6115d7a-cde3-3314-0fb8-cee9a0ed3c08",
+		"a7db79d7-c808-5e1c-0a96-b2a868281ab0",
+		"9bbdbcd2-b275-bc5e-253d-99e5a46c3a99"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1650092251906,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "2874748f-5894-cee7-59f8-1f51ca705f21",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/api/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "412635bc-8f3d-99e2-1af3-9c21fc75f9ee",
+			"data": [
+				{
+					"key": "username",
+					"value": "admin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "passcode",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1650092396586,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "76e22e98-7c2e-0682-f116-202725fb20a9",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/api/links",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "412635bc-8f3d-99e2-1af3-9c21fc75f9ee",
+			"data": null,
+			"dataMode": "params",
+			"name": "Links List ",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1650092579804,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "9bbdbcd2-b275-bc5e-253d-99e5a46c3a99",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/api/links/delete/41",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "412635bc-8f3d-99e2-1af3-9c21fc75f9ee",
+			"data": [
+				{
+					"key": "url",
+					"value": "http://dfsf.com/SSSSSSSSSS",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Link Delete",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1650092740840,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a7db79d7-c808-5e1c-0a96-b2a868281ab0",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/api/links/update/41",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "412635bc-8f3d-99e2-1af3-9c21fc75f9ee",
+			"data": [
+				{
+					"key": "url",
+					"value": "http://dfsf.com/SSSSSSSSSS",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Link Update",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1650092718142,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "e6115d7a-cde3-3314-0fb8-cee9a0ed3c08",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0Sx5H_i07Kl5IbZubOZq0ak22JyLcH1L8SlIT9e1n350",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/api/links",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "412635bc-8f3d-99e2-1af3-9c21fc75f9ee",
+			"data": [
+				{
+					"key": "url",
+					"value": "http://dfsf.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Link Create",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1650092640694,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}
